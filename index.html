@@ -57,15 +57,15 @@
             padding: 20px;
             text-align: center;
             max-width: 440px;
-            width: 92%;
+            width: 95%;
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 20px;
         }
 
         .modal-title {
-            font-size: clamp(1.05rem, 4.8vw, 1.35rem); 
-            letter-spacing: -0.02em;
+            font-size: clamp(1rem, 4.5vw, 1.3rem); 
+            letter-spacing: -0.01em;
             margin: 0;
             font-weight: 700;
             white-space: nowrap; 
@@ -95,11 +95,10 @@
             font-family: 'Gowun Batang', serif;
             cursor: pointer;
             letter-spacing: 0.1em;
-            font-size: 1.1rem;
+            font-size: 1rem;
             border-radius: 16px;
             font-weight: 700;
         }
-        .modal-btn.secondary { background: rgba(0,0,0,0.08); color: #333; }
 
         /* 달력 뷰 */
         #calendar-view {
@@ -117,11 +116,11 @@
             padding: 0 10px;
         }
 
-        .calendar-title { font-size: 1.6rem; letter-spacing: 0.1em; font-weight: 700; }
-        .nav-btn { background: rgba(0,0,0,0.03); border: none; font-size: 1.1rem; cursor: pointer; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .calendar-title { font-size: 1.5rem; letter-spacing: 0.1em; font-weight: 700; }
+        .nav-btn { background: rgba(0,0,0,0.03); border: none; font-size: 1rem; cursor: pointer; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 
         .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
-        .day-label { font-weight: 700; font-size: 0.75rem; padding-bottom: 15px; color: var(--accent-gray); }
+        .day-label { font-weight: 700; font-size: 0.75rem; padding-bottom: 10px; color: var(--accent-gray); }
 
         .calendar-day {
             aspect-ratio: 1 / 1;
@@ -130,49 +129,49 @@
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 0.95rem;
             border-radius: 10px;
             position: relative;
         }
         .calendar-day.today { background-color: var(--black); color: var(--white); font-weight: 700; }
         .calendar-day.holiday { color: var(--holiday-red); }
 
-        /* 일기장 본체 (사진 크기 극대화) */
+        /* 일기장 본체 (여백 최적화) */
         #diary-artifact {
             background-color: var(--white);
             width: 100%;
             max-width: 500px;
-            padding: 50px 8px 30px; 
+            padding: 30px 8px 10px; 
             display: flex;
             flex-direction: column;
             position: relative;
         }
 
-        .header-section { display: flex; flex-direction: column; margin-bottom: 20px; padding: 0 12px; }
-        .title-row { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 12px; }
-        .back-to-cal { font-size: 0.85rem; color: var(--accent-gray); cursor: pointer; padding: 8px 0; }
-        .main-title-display { font-size: 1.8rem; font-weight: 700; letter-spacing: 0.05em; }
+        .header-section { display: flex; flex-direction: column; margin-bottom: 10px; padding: 0 10px; }
+        .title-row { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 8px; }
+        .back-to-cal { font-size: 0.8rem; color: var(--accent-gray); cursor: pointer; padding: 5px 0; }
+        .main-title-display { font-size: 1.5rem; font-weight: 700; letter-spacing: 0.05em; }
 
         .meta-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             border-bottom: 1px solid #000;
-            padding-bottom: 8px;
+            padding-bottom: 6px;
         }
 
-        .filter-selector { display: flex; justify-content: center; gap: 15px; margin-top: 15px; font-size: 0.85rem; }
-        .filter-opt { cursor: pointer; color: var(--accent-gray); padding: 6px 12px; border: 1px solid transparent; border-radius: 20px; }
+        .filter-selector { display: flex; justify-content: center; gap: 10px; margin-top: 10px; font-size: 0.8rem; }
+        .filter-opt { cursor: pointer; color: var(--accent-gray); padding: 5px 12px; border-radius: 20px; background: transparent; }
         .filter-opt.active { color: var(--black); font-weight: 700; background: #f2f2f7; }
 
-        /* 사진 영역 */
-        .photo-container { width: 100%; margin-top: 10px; display: flex; justify-content: center; }
+        /* 사진 영역 (인스타그램 피드 스타일 1:1) */
+        .photo-container { width: 100%; margin-top: 5px; display: flex; justify-content: center; }
 
         .polaroid-frame {
             background: white;
-            padding: 10px 10px 50px 10px;
-            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+            padding: 8px 8px 35px 8px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             border: 1px solid #f2f2f2;
             width: 100%; 
             position: relative;
@@ -189,45 +188,50 @@
             align-items: center;
         }
 
-        video, .captured-img { width: 100%; height: 100%; object-fit: cover; }
+        video, .captured-img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            display: block;
+        }
         video { transform: scaleX(-1); }
 
-        /* 필터 정의 */
-        .fuji-filter { filter: contrast(1.45) brightness(1.1) saturate(1.4) sepia(0.06); }
-        .bw-filter { filter: grayscale(1) contrast(1.8) brightness(1.05); }
+        /* 필터 정의 (미리보기 및 화면 표시용) */
+        .fuji-filter { filter: contrast(1.4) brightness(1.1) saturate(1.3) sepia(0.05); }
+        .bw-filter { filter: grayscale(100%) contrast(1.8) brightness(1.05); }
 
         .flash-overlay {
             position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at center, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0) 80%);
+            background: radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 80%);
             mix-blend-mode: screen; pointer-events: none; z-index: 5;
         }
 
         .vignette-overlay {
             position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle, transparent 30%, rgba(0,0,0,0.5) 100%);
+            background: radial-gradient(circle, transparent 35%, rgba(0,0,0,0.5) 100%);
             mix-blend-mode: multiply; pointer-events: none; z-index: 6;
         }
 
         .date-stamp {
-            position: absolute; bottom: 12px; right: 15px; color: var(--date-orange);
-            font-family: 'Courier Prime', monospace; font-size: 1.15rem; font-weight: 700;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5); opacity: 0.95; z-index: 10;
+            position: absolute; bottom: 8px; right: 12px; color: var(--date-orange);
+            font-family: 'Courier Prime', monospace; font-size: 1.05rem; font-weight: 700;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.3); opacity: 0.95; z-index: 10;
         }
 
         .grain-overlay {
             position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.35; pointer-events: none;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjkiIGhlaWdodD0iMTI5Ij48ZmlsdGVyIGlkPSJuIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMC42NSIgbnVtT2N0YXZlcz0iNSIgc3RpdGNoVGlsZWS9InN0aXRjaCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNuKSIvPjwvc3ZnPg==');
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjkiIGhlaWdodD0iMTI5Ij48ZmlsdGVyIGlkPSJuIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMC45NSIgbnVtT2N0YXZlcz0iNSIgc3RpdGNoVGlsZWS9InN0aXRjaCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNuKSIvPjwvc3ZnPg==');
             z-index: 7;
         }
 
-        .divider-line { width: calc(100% - 24px); height: 1px; background-color: var(--black); margin: 30px 12px; }
+        .divider-line { width: calc(100% - 20px); height: 1px; background-color: var(--black); margin: 20px 10px; }
 
         .diary-textarea {
             width: 100%; border: none; background: transparent; font-family: 'Gowun Batang', serif;
-            font-size: 1.1rem; line-height: 2.2rem; color: var(--text-gray); resize: none; outline: none;
-            min-height: 220px; padding: 0 12px; display: block;
-            background-image: linear-gradient(transparent, transparent calc(2.2rem - 1px), var(--line-color) calc(2.2rem - 1px));
-            background-size: 100% 2.2rem; background-attachment: local;
+            font-size: 0.9rem; line-height: 1.8rem; color: var(--text-gray); resize: none; outline: none;
+            min-height: 140px; padding: 0 10px; display: block;
+            background-image: linear-gradient(transparent, transparent calc(1.8rem - 1px), var(--line-color) calc(1.8rem - 1px));
+            background-size: 100% 1.8rem; background-attachment: local;
             overflow: hidden;
         }
 
@@ -238,19 +242,19 @@
             background: rgba(255, 255, 255, 0.88);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
-            padding: 15px 20px calc(15px + env(safe-area-inset-bottom));
+            padding: 12px 20px calc(15px + env(safe-area-inset-bottom));
             display: flex;
-            gap: 12px;
+            gap: 10px;
             z-index: 100;
             box-shadow: 0 -0.5px 0 rgba(0,0,0,0.1);
         }
 
         .control-btn {
             flex: 1;
-            padding: 18px;
+            padding: 16px;
             font-family: 'Gowun Batang', serif;
-            border-radius: 18px;
-            font-size: 1rem;
+            border-radius: 16px;
+            font-size: 0.95rem;
             cursor: pointer;
             text-align: center;
             border: 1px solid #e5e5e5;
@@ -259,7 +263,7 @@
         }
         .control-btn.primary { background: var(--black); color: var(--white); border: none; }
 
-        /* 수동 셔터 버튼 시스템 */
+        /* 수동 촬영 셔터 버튼 시스템 */
         #shutter-btn-container {
             position: fixed;
             bottom: calc(40px + env(safe-area-inset-bottom));
@@ -270,7 +274,7 @@
         }
 
         .shutter-btn {
-            width: 84px; height: 84px;
+            width: 80px; height: 80px;
             border-radius: 50%;
             background: white;
             border: 6px solid rgba(0,0,0,0.05);
@@ -279,8 +283,8 @@
             pointer-events: auto;
         }
         .shutter-btn::after {
-            content: ''; width: 66px; height: 66px;
-            border-radius: 50%; border: 2.5px solid #000;
+            content: ''; width: 62px; height: 62px;
+            border-radius: 50%; border: 2px solid #000;
         }
         .shutter-btn:active { transform: scale(0.9); }
 
@@ -300,7 +304,7 @@
             display: flex; flex-direction: column; gap: 12px;
         }
         .bottom-sheet.active { bottom: 0; }
-        .sheet-option { padding: 22px; text-align: center; font-size: 1.15rem; border-radius: 20px; background: #f2f2f7; color: var(--black); font-weight: 700; }
+        .sheet-option { padding: 20px; text-align: center; font-size: 1.1rem; border-radius: 18px; background: #f2f2f7; color: var(--black); font-weight: 700; }
         .sheet-option.cancel { background: transparent; color: var(--accent-gray); font-weight: 400; }
 
         .shutter-flash { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; opacity: 0; pointer-events: none; z-index: 5000; }
@@ -322,8 +326,8 @@
 
     <!-- 2. 내보내기 옵션 모달 -->
     <div id="export-modal" class="modal-overlay hidden">
-        <div class="modal-box" style="gap: 15px;">
-            <h2 style="font-size: 1.4rem; margin-bottom: 5px; font-weight: 700;">기록을 어떻게 저장할까요?</h2>
+        <div class="modal-box" style="gap: 12px;">
+            <h2 style="font-size: 1.35rem; margin-bottom: 5px; font-weight: 700;">기록을 어떻게 저장할까요?</h2>
             <button class="modal-btn" id="export-full-btn">일기장 전체 저장</button>
             <button class="modal-btn" id="export-photo-btn">폴라로이드 사진만 저장</button>
             <button class="modal-btn secondary" id="export-cancel-btn">취소</button>
@@ -343,14 +347,13 @@
             <div class="day-label">화</div>
             <div class="day-label">수</div>
             <div class="day-label">목</div>
-            <div class="day-label">금</div>
             <div class="day-label" style="color: #1976d2;">토</div>
         </div>
     </div>
 
     <!-- 4. 일기장 본체 -->
     <div id="diary-artifact" class="hidden">
-        <div class="header-section">
+        <div class="header-section" id="header-area">
             <div class="title-row">
                 <span class="back-to-cal" id="go-back-cal">〈 달력으로</span>
                 <div class="main-title-display" id="display-title">영원</div>
@@ -358,8 +361,8 @@
             <div class="meta-row">
                 <div><span id="selected-date-text" style="font-weight: 700;">2026.03.04</span></div>
                 <div>
-                    <span style="font-size: 0.85rem; color: var(--accent-gray);">날씨</span>
-                    <input type="text" id="weather-input" style="border:none; background:transparent; font-family:inherit; outline:none; width: 65px; text-align: right; font-weight: 700;" value="맑음">
+                    <span style="font-size: 0.8rem; color: var(--accent-gray);">날씨</span>
+                    <input type="text" id="weather-input" style="border:none; background:transparent; font-family:inherit; outline:none; width: 60px; text-align: right; font-weight: 700;" value="맑음">
                 </div>
             </div>
             <div class="filter-selector">
@@ -368,7 +371,7 @@
             </div>
         </div>
 
-        <div class="photo-container">
+        <div class="photo-container" id="photo-area">
             <div class="polaroid-frame" id="polaroid-target">
                 <div class="image-wrapper" id="image-wrapper">
                     <video id="camera-preview" class="fuji-filter" autoplay playsinline></video>
@@ -380,7 +383,7 @@
             </div>
         </div>
 
-        <div class="divider-line"></div>
+        <div class="divider-line" id="divider-area"></div>
         <textarea class="diary-textarea" id="diary-text" placeholder="오늘 당신의 순간을 기록하세요." spellcheck="false"></textarea>
     </div>
 
@@ -445,8 +448,7 @@
         let stream = null;
 
         const holidays = {
-            "2024-01-01": "신정", "2024-02-09": "설날", "2024-02-10": "설날", "2024-02-11": "설날", "2024-02-12": "대체공휴일", "2024-03-01": "삼일절", "2025-01-01": "신정", "2025-01-28": "설날", "2025-03-01": "삼일절", "2025-05-05": "어린이날", "2025-10-03": "개천절", "2025-10-09": "한글날", "2025-12-25": "성탄절",
-            "2026-03-01": "삼일절", "2026-05-05": "어린이날", "2026-06-06": "현충일", "2026-08-15": "광복절", "2026-10-03": "개천절", "2026-10-09": "한글날", "2026-12-25": "성탄절"
+            "2024-01-01": "신정", "2024-02-09": "설날", "2024-03-01": "삼일절", "2025-01-01": "신정", "2025-03-01": "삼일절", "2025-05-05": "어린이날", "2026-03-01": "삼일절", "2026-05-05": "어린이날", "2026-06-06": "현충일", "2026-08-15": "광복절", "2026-10-03": "개천절", "2026-10-09": "한글날", "2026-12-25": "성탄절"
         };
 
         confirmBtn.onclick = () => {
@@ -474,9 +476,8 @@
                 dEl.className = 'calendar-day';
                 dEl.innerText = d;
                 const dateKey = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-                const dayOfWeek = new Date(year, month, d).getDay();
                 if (year === today.getFullYear() && month === today.getMonth() && d === today.getDate()) dEl.classList.add('today');
-                if (dayOfWeek === 0 || holidays[dateKey]) dEl.classList.add('holiday');
+                if (new Date(year, month, d).getDay() === 0 || holidays[dateKey]) dEl.classList.add('holiday');
                 dEl.onclick = () => {
                     selectedDate = new Date(year, month, d);
                     selectedDateText.innerText = `${year}.${String(month+1).padStart(2,'0')}.${String(d).padStart(2,'0')}`;
@@ -492,7 +493,10 @@
         nextMonthBtn.onclick = () => { currentMonth++; if(currentMonth > 11){ currentMonth = 0; currentYear++; } renderCalendar(currentYear, currentMonth); };
 
         async function startCamera() {
-            try { stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user', width: { ideal: 1280 } }, audio: false }); video.srcObject = stream; } catch (err) { console.error("Camera error:", err); }
+            try { 
+                stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user', width: { ideal: 1080 }, height: { ideal: 1080 } }, audio: false }); 
+                video.srcObject = stream; 
+            } catch (err) { console.error("Camera error:", err); }
         }
 
         recordMenuBtn.onclick = () => { if (!isCaptured) { sheetOverlay.classList.add('active'); recordSheet.classList.add('active'); } };
@@ -504,32 +508,94 @@
             diaryControls.classList.add('hidden'); shutterContainer.classList.remove('hidden');
         };
 
+        // 캔버스를 통해 물리적으로 필터를 입힌 이미지 데이터를 생성하는 핵심 함수
+        function createFilteredImageData(source, isVideo = false) {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // 해상도 동기화: 비디오/이미지의 실제 픽셀 너비를 구함
+            const w = isVideo ? source.videoWidth : source.naturalWidth;
+            const h = isVideo ? source.videoHeight : source.naturalHeight;
+            const size = Math.min(w, h);
+            
+            canvas.width = size;
+            canvas.height = size;
+
+            // 1. Canvas Context Filter 설정 (저장 시 동일 반영 보증)
+            if (currentFilter === 'bw') {
+                ctx.filter = 'grayscale(100%) contrast(1.2) brightness(1.1)';
+            } else {
+                ctx.filter = 'contrast(1.1) brightness(1.1) saturate(1.2)';
+            }
+
+            // 2. 소스 이미지 중앙 크롭 및 그리기 (좌우 반전 처리)
+            if (isVideo) {
+                ctx.translate(canvas.width, 0); ctx.scale(-1, 1);
+                ctx.drawImage(source, (w - size) / 2, (h - size) / 2, size, size, 0, 0, size, size);
+            } else {
+                ctx.drawImage(source, (w - size) / 2, (h - size) / 2, size, size, 0, 0, size, size);
+            }
+            
+            return canvas.toDataURL('image/png');
+        }
+
         realShutter.onclick = () => {
             flash.style.animation = 'none'; void flash.offsetWidth; flash.style.animation = 'shutter 0.4s ease-out';
-            const canvas = document.createElement('canvas'); canvas.width = video.videoWidth; canvas.height = video.videoHeight;
-            const ctx = canvas.getContext('2d'); ctx.translate(canvas.width, 0); ctx.scale(-1, 1); ctx.drawImage(video, 0, 0);
-            renderFinalImage(canvas.toDataURL('image/png'));
+            const finalSrc = createFilteredImageData(video, true);
+            renderFinalImage(finalSrc);
             shutterContainer.classList.add('hidden'); diaryControls.classList.remove('hidden');
         };
 
         document.getElementById('upload-option').onclick = () => fileInput.click();
-        fileInput.onchange = (e) => { if (e.target.files[0]) { const r = new FileReader(); r.onload = (ev) => renderFinalImage(ev.target.result); r.readAsDataURL(e.target.files[0]); } };
+        fileInput.onchange = (e) => { 
+            if (e.target.files[0]) { 
+                const r = new FileReader(); 
+                r.onload = (ev) => {
+                    const tempImg = new Image();
+                    tempImg.onload = () => {
+                        const finalSrc = createFilteredImageData(tempImg, false);
+                        renderFinalImage(finalSrc);
+                    };
+                    tempImg.src = ev.target.result;
+                }; 
+                r.readAsDataURL(e.target.files[0]); 
+            } 
+        };
 
         function renderFinalImage(src) {
-            const img = document.createElement('img'); img.src = src; img.className = 'captured-img ' + (currentFilter === 'color' ? 'fuji-filter' : 'bw-filter');
-            video.classList.add('hidden'); imageWrapper.prepend(img); isCaptured = true; 
+            const img = document.createElement('img'); 
+            img.src = src; 
+            img.className = 'captured-img'; // 물리적으로 필터링된 이미지이므로 필터 클래스 불필요
+            video.classList.add('hidden'); 
+            imageWrapper.prepend(img); 
+            isCaptured = true; 
             if(sheetOverlay.classList.contains('active')) sheetOverlay.onclick();
             recordMenuBtn.style.opacity = '0.5';
         }
 
-        resetBtn.onclick = () => { isCaptured = false; const ci = document.querySelector('.captured-img'); if(ci) ci.remove(); video.classList.remove('hidden'); recordMenuBtn.style.opacity = '1'; };
-        backToCalBtn.onclick = () => { if(stream) stream.getTracks().forEach(t => t.stop()); diaryView.classList.add('hidden'); diaryControls.classList.add('hidden'); calendarView.classList.remove('hidden'); resetBtn.onclick(); };
+        resetBtn.onclick = () => { 
+            isCaptured = false; 
+            const ci = document.querySelector('.captured-img'); 
+            if(ci) ci.remove(); 
+            video.classList.remove('hidden'); 
+            recordMenuBtn.style.opacity = '1'; 
+        };
+        
+        backToCalBtn.onclick = () => { 
+            if(stream) stream.getTracks().forEach(t => t.stop()); 
+            diaryView.classList.add('hidden'); 
+            diaryControls.classList.add('hidden'); 
+            calendarView.classList.remove('hidden'); 
+            resetBtn.onclick(); 
+        };
 
         filterOpts.forEach(opt => {
             opt.onclick = () => {
                 if (isCaptured) return;
-                filterOpts.forEach(o => o.classList.remove('active')); opt.classList.add('active');
-                currentFilter = opt.dataset.filter; video.className = currentFilter === 'color' ? 'fuji-filter' : 'bw-filter';
+                filterOpts.forEach(o => o.classList.remove('active')); 
+                opt.classList.add('active');
+                currentFilter = opt.dataset.filter; 
+                video.className = currentFilter === 'color' ? 'fuji-filter' : 'bw-filter';
             };
         });
 
@@ -537,11 +603,12 @@
         document.getElementById('export-cancel-btn').onclick = () => exportModal.classList.add('hidden');
 
         function performExport(target, filename, isFull) {
-            exportModal.classList.add('hidden'); saveBtn.innerText = "저장중";
+            exportModal.classList.add('hidden'); 
+            saveBtn.innerText = "저장중";
             
-            // 캡처 전 레이아웃 고정 (왜곡 방지)
-            const originalWidth = target.offsetWidth;
-            const originalHeight = target.offsetHeight;
+            // 현재 화면의 물리적 픽셀 너비를 정확히 구함 (왜곡 방지)
+            const rect = target.getBoundingClientRect();
+            const originalWidth = rect.width;
             
             if (isFull) { diaryView.classList.add('exporting'); }
             
@@ -550,9 +617,9 @@
                 scale: 3, 
                 useCORS: true,
                 allowTaint: true,
+                width: originalWidth, 
                 onclone: (clonedDoc) => {
                     const clonedTarget = clonedDoc.getElementById(target.id);
-                    // 강제로 실제 픽셀 너비를 주입하여 뷰포트 변화에 따른 뒤틀림 방지
                     clonedTarget.style.width = originalWidth + "px";
                     
                     if(isFull) {
@@ -564,20 +631,6 @@
                         td.style.cssText = `width:100%; font-family:${ts.fontFamily}; font-size:${ts.fontSize}; line-height:${ts.lineHeight}; color:${ts.color}; white-space:pre-wrap; word-break:break-all; min-height:${ts.minHeight}; background-image:${ts.backgroundImage}; background-size:${ts.backgroundSize}; padding: 0 12px; margin-top:10px;`;
                         td.innerText = tv || " "; 
                         pr.replaceChild(td, ct);
-                    }
-                    
-                    // 필터 효과 강력 재입착 (흑백 무시 해결)
-                    const capturedImg = clonedDoc.querySelector('.captured-img');
-                    if (capturedImg) {
-                        if (currentFilter === 'bw') {
-                            capturedImg.style.filter = "grayscale(100%) contrast(1.8) brightness(1.05)";
-                        } else {
-                            capturedImg.style.filter = "contrast(1.45) brightness(1.1) saturate(1.4) sepia(0.06)";
-                        }
-                        // 이미지 왜곡 방지를 위한 사이즈 고정
-                        capturedImg.style.width = "100%";
-                        capturedImg.style.height = "100%";
-                        capturedImg.style.objectFit = "cover";
                     }
                 }
             }).then(canvas => {
