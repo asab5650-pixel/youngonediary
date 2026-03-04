@@ -16,7 +16,6 @@
             --accent-gray: #888;
             --date-orange: #ff8c00;
             --holiday-red: #eb4d4b;
-            --ios-bg: #f2f2f7;
         }
 
         * {
@@ -32,7 +31,7 @@
             align-items: center;
             margin: 0;
             padding: 0;
-            padding-bottom: calc(100px + env(safe-area-inset-bottom));
+            padding-bottom: calc(110px + env(safe-area-inset-bottom));
             color: var(--black);
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
@@ -61,12 +60,13 @@
             width: 95%;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 25px;
         }
 
         .modal-title {
-            font-size: 1.25rem; /* 한 줄 고정을 위한 최적 크기 */
-            letter-spacing: -0.01em;
+            /* 텍스트 끊김 방지: 유동적 크기 조절 및 줄바꿈 금지 */
+            font-size: clamp(1.05rem, 4.8vw, 1.35rem); 
+            letter-spacing: -0.02em;
             margin: 0;
             font-weight: 700;
             white-space: nowrap; 
@@ -136,20 +136,20 @@
         .calendar-day.today { background-color: var(--black); color: var(--white); font-weight: 700; }
         .calendar-day.holiday { color: var(--holiday-red); }
 
-        /* 일기장 본체 (사진 크기를 극대화) */
+        /* 일기장 본체: 사진 크기 극대화를 위해 여백 재설계 */
         #diary-artifact {
             background-color: var(--white);
             width: 100%;
             max-width: 500px;
-            padding: 40px 10px 20px; 
+            padding: 30px 8px 10px; 
             display: flex;
             flex-direction: column;
         }
 
-        .header-section { display: flex; flex-direction: column; margin-bottom: 15px; padding: 0 10px; }
-        .title-row { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 10px; }
+        .header-section { display: flex; flex-direction: column; margin-bottom: 10px; padding: 0 10px; }
+        .title-row { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 8px; }
         .back-to-cal { font-size: 0.8rem; color: var(--accent-gray); cursor: pointer; padding: 5px 0; }
-        .main-title-display { font-size: 1.6rem; font-weight: 700; letter-spacing: 0.05em; }
+        .main-title-display { font-size: 1.5rem; font-weight: 700; letter-spacing: 0.05em; }
 
         .meta-row {
             display: flex;
@@ -160,16 +160,16 @@
             padding-bottom: 6px;
         }
 
-        .filter-selector { display: flex; justify-content: center; gap: 12px; margin-top: 12px; font-size: 0.8rem; }
-        .filter-opt { cursor: pointer; color: var(--accent-gray); padding: 5px 10px; border-radius: 20px; border: 1px solid rgba(0,0,0,0.05); }
-        .filter-opt.active { color: var(--black); font-weight: 700; background: #f2f2f7; border-color: transparent; }
+        .filter-selector { display: flex; justify-content: center; gap: 10px; margin-top: 10px; font-size: 0.8rem; }
+        .filter-opt { cursor: pointer; color: var(--accent-gray); padding: 5px 12px; border-radius: 20px; background: transparent; }
+        .filter-opt.active { color: var(--black); font-weight: 700; background: #f2f2f7; }
 
-        /* 사진 영역 (인스타그램 피드 스타일 1:1) */
+        /* 사진 영역: 인스타그램 피드 사이즈 (1:1 정사각형) */
         .photo-container { width: 100%; margin-top: 5px; display: flex; justify-content: center; }
 
         .polaroid-frame {
             background: white;
-            padding: 8px 8px 35px 8px; /* 하단 공간을 줄여 더 모던하게 */
+            padding: 8px 8px 32px 8px; /* 하단 여백 축소 */
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             border: 1px solid #f2f2f2;
             width: 100%; 
@@ -178,7 +178,7 @@
 
         .image-wrapper {
             width: 100%;
-            aspect-ratio: 1 / 1; /* 정사각형으로 인스타그램 감성 유도 */
+            aspect-ratio: 1 / 1; /* 정사각형 비율 */
             overflow: hidden;
             position: relative;
             background-color: #080808;
@@ -190,9 +190,9 @@
         video, .captured-img { width: 100%; height: 100%; object-fit: cover; }
         video { transform: scaleX(-1); }
 
-        /* 필름 필터 */
-        .fuji-filter { filter: contrast(1.4) brightness(1.1) saturate(1.3) sepia(0.05) hue-rotate(-8deg); }
-        .bw-filter { filter: grayscale(100%) contrast(2.1) brightness(1.05); }
+        /* 필터 감성 보정 */
+        .fuji-filter { filter: contrast(1.4) brightness(1.1) saturate(1.3) sepia(0.05) hue-rotate(-5deg); }
+        .bw-filter { filter: grayscale(100%) contrast(2) brightness(1.05); }
 
         .flash-overlay {
             position: absolute; top: 0; left: 0; right: 0; bottom: 0;
@@ -214,20 +214,20 @@
 
         .grain-overlay {
             position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.35; pointer-events: none;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjkiIGhlaWdodD0iMTI5Ij48ZmlsdGVyIGlkPSJuIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMC45NSIgbnVtT2N0YXZlcz0iNSIgc3RpdGNoVGlsZWS9InN0aXRjaCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNuKSIvPjwvc3ZnPg==');
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjkiIGhlaWdodD0iMTI5Ij48ZmlsdGVyIGlkPSJuIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMC42NSIgbnVtT2N0YXZlcz0iNSIgc3RpdGNoVGlsZWS9InN0aXRjaCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNuKSIvPjwvc3ZnPg==');
             z-index: 7;
         }
 
-        .divider-line { width: calc(100% - 20px); height: 1px; background-color: var(--black); margin: 25px 10px; }
+        .divider-line { width: calc(100% - 20px); height: 1px; background-color: var(--black); margin: 20px 10px; }
 
         .diary-textarea {
             width: 100%; border: none; background: transparent; font-family: 'Gowun Batang', serif;
-            font-size: 0.95rem; /* 글씨 크기 축소 */
-            line-height: 1.9rem; /* 줄 간격 축소 */
+            font-size: 0.9rem; /* 글자 크기 축소 */
+            line-height: 1.8rem; /* 줄 간격 축소 */
             color: var(--text-gray); resize: none; outline: none;
-            min-height: 180px; padding: 0 10px; display: block;
-            background-image: linear-gradient(transparent, transparent calc(1.9rem - 1px), var(--line-color) calc(1.9rem - 1px));
-            background-size: 100% 1.9rem; background-attachment: local;
+            min-height: 140px; padding: 0 10px; display: block;
+            background-image: linear-gradient(transparent, transparent calc(1.8rem - 1px), var(--line-color) calc(1.8rem - 1px));
+            background-size: 100% 1.8rem; background-attachment: local;
             overflow: hidden;
         }
 
@@ -259,7 +259,7 @@
         }
         .control-btn.primary { background: var(--black); color: var(--white); border: none; }
 
-        /* 수동 셔터 버튼 */
+        /* 수동 촬영 셔터 버튼 시스템 */
         #shutter-btn-container {
             position: fixed;
             bottom: calc(40px + env(safe-area-inset-bottom));
@@ -280,7 +280,7 @@
         }
         .shutter-btn::after {
             content: ''; width: 62px; height: 62px;
-            border-radius: 50%; border: 2px solid #000;
+            border-radius: 50%; border: 2.5px solid #000;
         }
         .shutter-btn:active { transform: scale(0.9); }
 
@@ -296,7 +296,7 @@
             position: fixed; bottom: -100%; left: 0; width: 100%;
             background: var(--white); border-radius: 30px 30px 0 0;
             padding: 20px 20px calc(45px + env(safe-area-inset-bottom));
-            z-index: 4501; transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+            z-index: 4501; transition: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
             display: flex; flex-direction: column; gap: 10px;
         }
         .bottom-sheet.active { bottom: 0; }
@@ -445,8 +445,7 @@
         let stream = null;
 
         const holidays = {
-            "2024-01-01": "신정", "2024-02-09": "설날", "2024-02-10": "설날", "2024-02-11": "설날", "2024-02-12": "대체공휴일", "2024-03-01": "삼일절", "2024-05-05": "어린이날", "2024-06-06": "현충일", "2024-08-15": "광복절", "2024-10-03": "개천절", "2024-10-09": "한글날", "2024-12-25": "성탄절",
-            "2025-01-01": "신정", "2025-01-28": "설날", "2025-03-01": "삼일절", "2025-05-05": "어린이날", "2025-06-06": "현충일", "2025-08-15": "광복절", "2025-10-03": "개천절", "2025-10-05": "추석", "2025-10-09": "한글날", "2025-12-25": "성탄절",
+            "2024-01-01": "신정", "2024-02-09": "설날", "2024-02-10": "설날", "2024-02-11": "설날", "2024-02-12": "대체공휴일", "2024-03-01": "삼일절", "2025-01-01": "신정", "2025-01-28": "설날", "2025-03-01": "삼일절", "2025-05-05": "어린이날", "2025-10-03": "개천절", "2025-10-09": "한글날", "2025-12-25": "성탄절",
             "2026-03-01": "삼일절", "2026-05-05": "어린이날", "2026-06-06": "현충일", "2026-08-15": "광복절", "2026-10-03": "개천절", "2026-10-09": "한글날", "2026-12-25": "성탄절"
         };
 
@@ -478,7 +477,6 @@
                 const dayOfWeek = new Date(year, month, d).getDay();
                 if (year === today.getFullYear() && month === today.getMonth() && d === today.getDate()) dEl.classList.add('today');
                 if (dayOfWeek === 0 || holidays[dateKey]) dEl.classList.add('holiday');
-                if (holidays[dateKey]) { const h = document.createElement('span'); h.className = 'holiday-name'; h.innerText = holidays[dateKey]; dEl.appendChild(h); }
                 dEl.onclick = () => {
                     selectedDate = new Date(year, month, d);
                     selectedDateText.innerText = `${year}.${String(month+1).padStart(2,'0')}.${String(d).padStart(2,'0')}`;
